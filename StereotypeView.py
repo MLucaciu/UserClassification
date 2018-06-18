@@ -17,8 +17,6 @@ class StereotypeView(FlaskView):
         pool = float(request.args.get('pool'))
         expensive = float(request.args.get('expensive'))
         user_type = stereotype.classifier.predict([[cold, sunny, rainy, city_break, vacantion, economic, pool, expensive]])
-        # prepare_response = pd.DataFrame(user_type, columns=clf.classes_)
-        # res = prepare_response.to_json()
         response = app.response_class(
             response=json.dumps(user_type[0]),
             status=200,
